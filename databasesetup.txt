@@ -1,0 +1,27 @@
+
+create database ASAPPTESTDB;
+use ASAPPTESTDB;
+
+CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'testpass';
+GRANT ALL PRIVILEGES ON ASAPPTESTDB.* TO 'newuser'@'localhost';
+
+CREATE TABLE test (
+	user_id BIGINT NOT NULL AUTO_INCREMENT,
+	reg_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	fullname varchar(120) NOT NULL,
+	email varchar(120) NOT NULL,
+	password varchar(400) NOT NULL,
+	
+	PRIMARY KEY (user_id),
+	UNIQUE KEY uniqueEmail (email)
+
+);
+
+
+CREATE TABLE messages (
+	user_id BIGINT NOT NULL,
+	fullname varchar(120) NOT NULL,
+	text varchar(400) NOT NULL,
+	date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+
+);

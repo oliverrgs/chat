@@ -1,0 +1,56 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript" src="dev.js"></script>
+<script type="text/javascript" src="socket.io.min.js"></script>
+<link rel="stylesheet" href="styles.css" type="text/css">
+
+
+</head>
+<body>
+    <div id="hello-world-app">
+		<div style="margin:auto;font-size:30px;"><marquee> Chat for fun!</marquee></div>
+		<div v-if="!(user && user.fullname) ">
+		  <div style="border: 1px inset">
+			{{errormessage}}
+			<h1>Register an account</h1>
+			  <input id="registerFullname" placeholder="Register Name" v-on:keyup.enter="createAccount()"/>
+			  <input id="registerEmail" placeholder="Register Email" v-on:keyup.enter="createAccount()"/>
+			  <input type="password" id="registerPassword" placeholder="Register Password" v-on:keyup.enter="createAccount()"/>
+			  <input type="password" id="registerPassword2" placeholder="Repeat Register Password" v-on:keyup.enter="createAccount()"/>
+			  <input type="button" value="Register" v-on:click="createAccount()"/>
+		  </div>
+		  <div style="border:1px outset;">
+			<h1>Login</h1>
+			  <input id="loginEmail" placeholder="Email" v-on:keyup.enter="login()" />
+			  <input type="password" id="loginPassword" placeholder="Password" v-on:keyup.enter="login()" />
+			  <input type="button" value="Login" v-on:click="login()"/>
+			</div>
+		</div><!-- end v-if-->
+		<div v-else>
+			
+					<h2>Logged in as {{user.fullname}}</h2>
+					<div style="height:40vh;overflow-y:scroll;" id="messageContainer">
+			<div v-for="message of sortedMessages ">
+				{{message.date | formatDate}} - {{message.fullname}} : {{message.text}}<br/>
+			</div>
+			</div>
+				  <input type="button" v-on:click="logout();" value="Logout"/>
+				  <input id="message" autocomplete="off" v-on:keyup.enter="send()"  />
+				  <input type="button" v-on:click="send();" value="Send"/>
+			  </div><!-- end v-else-->
+	  </div>
+	  
+	  
+			  
+	  
+	  
+
+	
+	
+	  
+    </div>
+	
+	</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "connect": "^3.6.6",
+    "express": "^4.15.3",
+    "express-session": "^1.15.6",
+    "memorystore": "^1.6.0",
+    "mysql": "^2.13.0",
+    "socket.io": "^2.1.1"
+  }
+}
